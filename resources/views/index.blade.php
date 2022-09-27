@@ -91,11 +91,11 @@
     <footer id="" class="bg-dark dark pt-4" style="background-color: #ddae71!important;">
         <!-- Footer 2nd Row -->
             <div class="container">
-                        <div class="row">
+                <div class="row">
                             <div class="col-md-4">
                                 <div class="widget">
-                                        <h4 class="widget-title">Hakkımızda</h4>
-                                        <p>{{ $setting->description }}</p>
+                                    <h4 class="widget-title">Hakkımızda</h4>
+                                    <p>{{ $setting->description }}</p>
                                     <a type="button" class="" data-toggle="modal" data-target="#exampleModal" >İstek/Şikayet</a>
                                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
@@ -160,7 +160,7 @@
                             <div class="col-md-4">
                                 <div class="widget">
                                     <h4 class="widget-title">Sosyal Medya</h4>
-                                    <ul class="social-icons social-icons-colored">
+                                    <ul>
                                         @if(isset($social_media->facebook))
                                             <li class="social-icons-facebook">
                                                 <a href="{{ $social_media->facebook }}" target="_blank" title="Facebook">
@@ -190,6 +190,24 @@
                                             </li>
                                         @endif
                                     </ul>
+                                </div>
+                            </div>
+                        </div>
+                <div class="row">
+                            <div class="col-md-12">
+                                <div class="footer-bottom">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="footer-bottom-left">
+                                                <p>&copy; {{ date('Y') }} {{ $setting->title }}. Tüm Hakları Saklıdır.</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="footer-bottom-right">
+                                                <p>Site Tasarımı <a href="https://www.instagram.com/demirel.tugran" target="_blank">Tuğran Demirel</a> Tarafından Yapılmıştır.</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
