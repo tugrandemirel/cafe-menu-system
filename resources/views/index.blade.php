@@ -13,6 +13,8 @@
     <meta name="googlebot" content="index, follow" />
     <meta name="google" content="nositelinkssearchbox" />
     <meta name="google" content="notranslate" />
+    <meta name="favicon" content="{{ asset($setting->favicon) }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset($setting->favicon) }}">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&amp;family=Pacifico:wght@100;200;400;500&amp;display=swap" rel="stylesheet">
     <!-- CSS Core -->
@@ -96,7 +98,7 @@
                                 <div class="widget">
                                     <h4 class="widget-title">Hakkımızda</h4>
                                     <p>{{ $setting->description }}</p>
-                                    <a type="button" class="" data-toggle="modal" data-target="#exampleModal" >İstek/Şikayet</a>
+                                    <a type="button" class="" data-toggle="modal" data-target="#exampleModal" >İstek/Şikayet için tıklayınız.</a>
                                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
@@ -204,7 +206,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="footer-bottom-right">
-                                                <p>Site Tasarımı <a href="https://www.instagram.com/demirel.tugran" target="_blank">Tuğran Demirel</a> Tarafından Yapılmıştır.</p>
+                                                <p>Designed By <a href="https://www.instagram.com/demirel.tugran" target="_blank">Tuğran Demirel</a> Tarafından Yapılmıştır.</p>
                                             </div>
                                         </div>
                                     </div>
