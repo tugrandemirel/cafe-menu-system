@@ -30,6 +30,8 @@ class MenuController extends Controller
         if (Auth::check())
         {
             $data = $request->except('_token');
+            if ($data['name'] == null)
+                return redirect()->back()->with('error', 'Menü adı giriniz.');
             $data['slug'] = Str::slug($data['name']);
             $data['status'] = $request->has('status') ? 1 : 0;
             $data['parent_id'] = 0;
@@ -59,6 +61,8 @@ class MenuController extends Controller
         if (Auth::check())
         {
             $data = $request->except('_token');
+            if ($data['name'] == null)
+                return redirect()->back()->with('error', 'Menü adı giriniz.');
             $data['slug'] = Str::slug($data['name']);
             $data['status'] = $request->has('status') ? 1 : 0;
             $data['parent_id'] = 0;
@@ -97,7 +101,11 @@ class MenuController extends Controller
         if (Auth::check())
         {
             $data = $request->except('_token');
+            if ($data['name'] == null)
+                return redirect()->back()->with('error', 'Lütfen Menü adı giriniz.');
             $data['slug'] = Str::slug($data['name']);
+            if (!$request->hasFile('image'))
+                return redirect()->back()->with('error', 'Lütfen resim seçiniz.');
             $data['image'] = \ImageHelpers::uploadImage($data['image'], 'images/menu/');
             $data['status'] = $request->has('status') ? 1 : 0;
             $menu = Menu::create($data);
@@ -127,6 +135,8 @@ class MenuController extends Controller
         if (Auth::check())
         {
             $data = $request->except('_token');
+            if ($data['name'] == null)
+                return redirect()->back()->with('error', 'Lütfen Menü adı giriniz.');
             $data['slug'] = Str::slug($data['name']);
             if ($request->hasFile('image')){
                 \ImageHelpers::deleteImage($menu->image);
@@ -157,4 +167,6 @@ class MenuController extends Controller
                 return redirect()->back()->with('error', 'Menü silinirken bir hata oluştu.');
         }
     }
+
+
 }

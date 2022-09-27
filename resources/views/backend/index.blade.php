@@ -19,7 +19,7 @@
                             <tr class="text-dark">
                                 <th scope="col">#</th>
                                 <th scope="col">Resim</th>
-                                <th scope="col">Alt Menü Adı</th>
+                                <th scope="col">Ürün Adı</th>
                                 <th scope="col">Oluşturulma Tarihi</th>
                                 <th scope="col">Düzenlenme Tarihi</th>
                                 <th scope="col">Durum</th>
