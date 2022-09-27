@@ -1,4 +1,6 @@
 @extends('backend.layouts.app')
+@section('css')
+@endsection
 @section('site_name', 'İstek Şikayet')
     @section('content')
     <div class="container-fluid pt-4 px-4">
@@ -25,36 +27,38 @@
                             <td>{{$item->email}}</td>
                             <td >{{$item->created_at}}</td>
                             <td>
-                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#{{ $item->id }}" data-whatever="@getbootstrap">Görüntüle</button>
-                                <div class="modal fade" id="{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="{{ $item->id }}" aria-hidden="true">
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal{{ $item->id }}" >Görüntüle</button>
+                                <div class="modal fade" id="exampleModal{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="{{ $item->id }}">New message</h5>
+                                            <div class="modal-header " >
+                                                <h5 class="modal-title" id="exampleModalLabel" style="color: black;">İstek/Şikayet</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <div class="modal-body">
-                                                <form>
+                                                <div class="modal-body" style="color: black;">
+                                                    @csrf
                                                     <div class="form-group">
-                                                        <label for="recipient-name" class="col-form-label">Recipient:</label>
-                                                        <input type="text" class="form-control" id="recipient-name">
+                                                        <label for="" class="text-left col-form-label">Ad-Soyad:</label>
+                                                        <input type="text" class="form-control" value="{{ $item->name }}" id="recipient-name"  disabled >
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="message-text" class="col-form-label">Message:</label>
-                                                        <textarea class="form-control" id="message-text"></textarea>
+                                                        <label for="recipient-name" class="col-form-label">E-mail</label>
+                                                        <input type="email" class="form-control" value="{{ $item->email }}" id="recipient-name"  disabled   style="  border-bottom-color: #cccccc; color: black;">
                                                     </div>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            </div>
+                                                    <div class="form-group">
+                                                        <label for="message-text" class="col-form-label">İstek/Şikayet:</label>
+                                                        <textarea class="form-control"  id="message-text" rows="10" cols="10" disabled  style="border-bottom-color: #cccccc; color: black;">{{$item->message}}</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>
-
-                            </td>
                         </tr>
                    @endforeach
                     </tbody>
@@ -63,4 +67,6 @@
         </div>
     </div>
 @endsection
+@section('scripts')
+   @endsection
 
