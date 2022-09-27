@@ -33,11 +33,17 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>
-                                            <a href="{{ route('admin.menu.edit', ['menu' => $menu]) }}">{{ $menu->name }}</a>
+                                            <a href="{{ route('admin.menu.show', ['menu' => $menu]) }}">{{ $menu->name }}</a>
                                         </td>
                                         <td>{{ $menu->created_at }}</td>
                                         <td>{{ $menu->updated_at }}</td>
-                                        <td>{{ $menu->status }}</td>
+                                        <td>
+                                            @if($menu->status == 1)
+                                                <span class="badge bg-success">Aktif</span>
+                                            @else
+                                                <span class="badge bg-danger">Pasif</span>
+                                            @endif
+                                        </td>
                                         <td>
                                             <a href="{{ route('admin.menu.edit', ['menu' => $menu]) }}" class="btn btn-sm btn-primary">Düzenle</a>
                                             <a href="{{ route('admin.menu.delete', ['menu' => $menu]) }}" class="btn btn-sm btn-danger">Sil</a>

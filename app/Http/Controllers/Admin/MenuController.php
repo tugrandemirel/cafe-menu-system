@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MenuStoreRequest;
 use App\Models\Menu;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
@@ -39,6 +40,13 @@ class MenuController extends Controller
                 return redirect()->back()->with('error', 'Menü oluşturulurken bir hata oluştu.');
 
         }
+    }
+
+    public function show($menu)
+    {
+        $menu = Menu::where('id', $menu)->first();
+        $products = Product::where('menu_id', $menu->id)->orderBy('created_at', 'DESC')->get();
+        return view('backend.menu.show', compact('menu', 'products'));
     }
 
     public function edit(Menu $menu)

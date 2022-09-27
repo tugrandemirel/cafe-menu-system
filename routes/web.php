@@ -24,7 +24,6 @@ use App\Http\Controllers\installController;
 
 Route::get('/', [FrontController::class, 'index'])->name('index');
 Route::post('/contact', [FrontController::class, 'contact'])->name('contact');
-Route::get('/command', [installController::class, 'artisanCommand']);;
 Auth::routes();
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {
@@ -33,6 +32,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
         Route::get('/', [MenuController::class, 'index'])->name('admin.menu.index');
         Route::get('/ekle', [MenuController::class, 'create'])->name('admin.menu.create');
+        Route::get('göster/{menu}', [MenuController::class, 'show'])->name('admin.menu.show');
         Route::post('/store', [MenuController::class, 'store'])->name('admin.menu.store');
         Route::get('/düzenle/{menu}', [MenuController::class, 'edit'])->name('admin.menu.edit');
         Route::post('/güncelle/{menu}', [MenuController::class, 'update'])->name('admin.menu.update');

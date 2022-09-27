@@ -22,17 +22,17 @@ class Menu extends Model
 
     public function submenu()
     {
-        return $this->belongsTo(Menu::class, 'parent_id', 'id');
+        return $this->belongsTo(Menu::class, 'parent_id', 'id')->where('status', 1);
     }
 
     public function submenus()
     {
-        return $this->hasMany(Menu::class, 'parent_id', 'id');
+        return $this->hasMany(Menu::class, 'parent_id', 'id')->where('status', 1);
     }
 
     public function products()
     {
-        return $this->hasMany(Product::class, 'menu_id', 'id');
+        return $this->hasMany(Product::class, 'menu_id', 'id')->where('status', 1);
     }
 
     public function subproducts()
