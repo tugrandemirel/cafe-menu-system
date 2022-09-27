@@ -20,12 +20,14 @@ class SettingController extends Controller
     public function update(Request $request)
     {
         $data = $request->except('_token');
-        if ($request->hasFile('logo')) {
-            $data['logo'] = \ImageHelpers::uploadImage($data['logo'], 'images/');
-            dd($data['logo']);
+        $setting = Setting::where('id', 1)->first();
+        $oldLogo = $setting->logo;
+        $oldFavicon = $setting->favicon;
+        if ($request->logo) {
+            $data['logo'] = ImageHelpers::updateImage($request->file('logo'), 'uploads/setting/', $oldLogo ? $oldLogo : null);
         }
-        if ($request->hasFile('favicon')) {
-            $data['favicon'] = ImageHelpers::uploadImage($data['favicon'], 'images/');
+        if ($request->favicon) {
+            $data['favicon'] = ImageHelpers::updateImage($request->file('favicon'), 'uploads/setting/', $oldFavicon ? $oldFavicon : null);
         }
         $data['status'] = 1;
         $update = Setting::where('id', 1)->update($data);

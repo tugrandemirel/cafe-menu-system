@@ -11,16 +11,19 @@ class ImageHelpers
         return $imageName;
     }
 
-    public static function deleteImage($image)
+    public static function deleteImage($image = null)
     {
-        if (file_exists(public_path( $image))) {
-            unlink(public_path($image));
+        if ($image != null)
+        {
+            if (file_exists(public_path( $image))) {
+                unlink(public_path($image));
+            }
         }
     }
 
     public static function updateImage($image, $path, $oldImage)
     {
-        self::deleteImage($oldImage, $path);
+        self::deleteImage($oldImage);
         return self::uploadImage($image, $path);
     }
 }
