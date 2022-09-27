@@ -8,7 +8,7 @@
             <div class="col-sm-12 col-xl-6">
                 <div class="bg-light rounded h-100 p-4">
                     <h6 class="mb-4">Site Ayarları</h6>
-                    <form action="{{ route('admin.setting.update') }}" method="POST">
+                    <form action="{{ route('admin.setting.update') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" value="{{ isset($setting) ? $setting->title : ''}}" id="floatingInput" name="title" required>
@@ -16,11 +16,11 @@
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="file" class="form-control" name="logo" maxlength="11" id="floatingLogo">
+                            <input type="file" class="form-control" name="logo" id="floatingLogo">
                             <label for="floatingLogo">Logo</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="file" class="form-control" name="favicon" maxlength="11" id="floatingFavicon">
+                            <input type="file" class="form-control" name="favicon" id="floatingFavicon">
                             <label for="floatingFavicon">Favicon</label>
                         </div>
                         <div class="form-floating mb-3">
