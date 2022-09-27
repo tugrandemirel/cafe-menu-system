@@ -1,5 +1,5 @@
 @extends('backend.layouts.app')
-@section('site_name', $menu->name.' Ürün Listesi')
+@section('site_name', $submenu->name.' Ürün Listesi')
 @section('css')
 @endsection
 @section('content')
@@ -14,7 +14,7 @@
               @if(isset($products)  && count($products) > 0)
                     <div class="bg-light text-center mt-4 rounded pt-4 px-4">
                         <div class="d-flex align-items-center justify-content-between mb-4">
-                            <h6 class="mb-0">{{ $menu->name }} İçeriği</h6>
+                            <h6 class="mb-0">{{ $submenu->name }} İçeriği</h6>
                         </div>
                         <div class="table-responsive">
                             <table class="table text-start align-middle table-bordered table-hover mb-0">
@@ -61,7 +61,7 @@
                   <div class="table-responsive" style="margin-top: 50px;">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Ürün Bulunamadı</h5>
+                            <h5 class="card-title">Menü Bulunamadı</h5>
                             <p class="card-text">Ürün eklemek için <a href="{{ route('admin.product.create') }}">tıklayınız</a></p>
                         </div>
                     </div>

@@ -109,6 +109,13 @@ class MenuController extends Controller
         }
     }
 
+    public function showSubmenu($submenu)
+    {
+        $submenu = Menu::where('id', $submenu)->first();
+        $products = Product::where('parent_id', $submenu->id)->orderBy('created_at', 'DESC')->get();
+        return view('backend.menu.submenu.show', compact('submenu', 'products'));
+    }
+
     public function editSubmenu(Menu $menu)
     {
         $menus = Menu::where('status', 1)->where('parent_id', 0)->get();

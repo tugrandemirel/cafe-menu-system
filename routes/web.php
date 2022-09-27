@@ -40,6 +40,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
         Route::prefix('altmenü')->group(function () {
             Route::get('/ekle/', [MenuController::class, 'createSubmenu'])->name('admin.submenu.create');
+            Route::get('/göster/{submenu}', [MenuController::class, 'showSubmenu'])->name('admin.submenu.show');
             Route::post('/store/', [MenuController::class, 'storeSubmenu'])->name('admin.submenu.store');
             Route::get('/düzenle/{menu}', [MenuController::class, 'editSubmenu'])->name('admin.submenu.edit');
             Route::post('/güncelle/{menu}', [MenuController::class, 'updateSubmenu'])->name('admin.submenu.update');

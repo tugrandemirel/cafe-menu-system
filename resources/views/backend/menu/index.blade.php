@@ -95,11 +95,17 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="{{ route('admin.submenu.edit', ['menu' => $submenu]) }}">{{ $submenu->name }}</a>
+                                        <a href="{{ route('admin.submenu.show', ['submenu' => $submenu]) }}">{{ $submenu->name }}</a>
                                     </td>
                                     <td>{{ $submenu->created_at }}</td>
                                     <td>{{ $submenu->updated_at }}</td>
-                                    <td>{{ $submenu->status }}</td>
+                                    <td>
+                                        @if($submenu->status == 1)
+                                            <span class="badge bg-success">Aktif</span>
+                                        @else
+                                            <span class="badge bg-danger">Pasif</span>
+                                        @endif
+                                    </td>
                                     <td>
                                         <a href="{{ route('admin.submenu.edit', ['menu' => $submenu]) }}" class="btn btn-sm btn-primary">Düzenle</a>
                                         <a href="{{ route('admin.submenu.delete', ['menu' => $submenu]) }}" class="btn btn-sm btn-danger">Sil</a>
