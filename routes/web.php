@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Front\FrontController;
 use App\Http\Controllers\installController;
+use App\Http\Controllers\Admin\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,7 +28,7 @@ Route::post('/contact', [FrontController::class, 'contact'])->name('contact');
 Auth::routes();
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {
-    Route::get('/anasayfa', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.home');
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.home');
     Route::prefix('menü')->group(function () {
 
         Route::get('/', [MenuController::class, 'index'])->name('admin.menu.index');
@@ -56,6 +57,10 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         Route::post('/güncelle/{product}', [ProductController::class, 'update'])->name('admin.product.update');
         Route::get('/sil/{product}', [ProductController::class, 'destroy'])->name('admin.product.destroy');
         Route::post('/submenu', [ProductController::class, 'getSubmenu'])->name('admin.product.getSubmenu');
+    });
+
+    Route::prefix('/kullanıcı')->group(function () {
+        Route::get('/', [UserController::class, 'index'])->name('admin.user.index');
     });
 
     Route::prefix('ayarlar')->group(function () {
