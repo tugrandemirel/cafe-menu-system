@@ -61,6 +61,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
     Route::prefix('/kullanıcı')->group(function () {
         Route::get('/', [UserController::class, 'index'])->name('admin.user.index');
+//        Route::get('/ekle', [UserController::class, 'index'])->name('admin.user.index');
     });
 
     Route::prefix('ayarlar')->group(function () {
