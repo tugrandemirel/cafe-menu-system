@@ -12,30 +12,37 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
+
+    // ürünlerin listelendiği sayfa
     public function index()
     {
+        // bana backend klasörü altında product klavörü altında index.blade.php dosyasını göster. gösterirken ilgili sayfaya product verisini gönder
         $products = Product::with('menus', 'submenus')->get();
-//        dd($products);
         return view('backend.product.index', compact('products'));
     }
 
     public function create()
     {
+        // bana backend klasörü altında product klavörü altında create.blade.php dosyasını göster Menus verisini gönder
         $menus = Menu::where('parent_id', 0)->where('status', 1)->get();
         return view('backend.product.create', compact('menus'));
     }
 
     public function store(ProductRequest $request)
     {
+        // create sayfası içerisinden gelen bilgileri veritabaına kayıt eden fonksiyon
         $data = $request->except('_token');
 
+        // menu secilmemisse hata ver
         if (empty($data['menu_id']) || empty($data['parent_id']))
             return redirect()->back()->with('error', 'Lütfen menü seçiniz');
         $data['slug'] = Str::slug($request->name);
+        // resim var mı yok mu kontrolü
         if ($request->hasFile('image'))
             $data['image'] = \ImageHelpers::uploadImage($data['image'], 'images/product/');
         else
             return redirect()->back()->with('error', 'Lütfen resim seçiniz');
+        // fiyat kontrolü
         if (empty($data['price']))
             return redirect()->back()->with('error', 'Lütfen fiyat giriniz');
         $data['status'] = $request->has('status') ? 1 : 0;
@@ -56,6 +63,7 @@ class ProductController extends Controller
 
     public function edit($id)
     {
+        // bana backend klasörü altında product klavörü altında edit.blade.php dosyasını göster Menus Product verisini gönder
         $product = Product::find($id);
         $menus = Menu::where('parent_id', 0)->where('status', 1)->get();
         return view('backend.product.edit', compact('product', 'menus'));

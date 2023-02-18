@@ -204,10 +204,6 @@
                                                 <p>&copy; {{ date('Y') }} {{ $setting->title }}. Tüm Hakları Saklıdır.</p>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="footer-bottom-right">
-                                                <p>Designed By <a href="https://www.instagram.com/demirel.tugran" target="_blank">Tuğran Demirel</a> Tarafından Yapılmıştır.</p>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
