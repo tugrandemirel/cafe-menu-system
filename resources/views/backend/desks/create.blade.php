@@ -108,7 +108,6 @@
             <script>
 
                 $('.addProduct').click(function (){
-                    alert('asd')
                     const product = $(this).parent().find('.product').val();
                     const product_id = $(this).parent().find('.id').val();
                     const price = $(this).parent().find('.price').val();
